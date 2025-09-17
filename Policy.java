@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Policy {
     private String policyNumber;
     private String providerName;
@@ -115,14 +116,50 @@ public class Policy {
         return price;
     }
 }
+
+
 class PolicyTest {
     public static void main(String[] args) {
-        Policy defaultPolicy = new Policy();
-        System.out.println("Default Policyholder BMI: " + defaultPolicy.calculateBMI());
-        System.out.println("Default Policy Price: $" + defaultPolicy.calculatePolicyPrice());
+        Scanner sc = new Scanner(System.in);
 
-        Policy customPolicy = new Policy("1234", "BlueCross", "Alice", "Smith", 55, "smoker", 62, 200);
-        System.out.println("\nCustom Policyholder BMI: " + customPolicy.calculateBMI());
-        System.out.println("Custom Policy Price: $" + customPolicy.calculatePolicyPrice());
+        System.out.print("Please enter the Policy Number: ");
+        String policyNumber = sc.nextLine();
+
+        System.out.print("\nPlease enter the Provider Name: ");
+        String providerName = sc.nextLine();
+
+        System.out.print("\nPlease enter the Policyholder’s First Name: ");
+        String firstName = sc.nextLine();
+
+        System.out.print("\nPlease enter the Policyholder’s Last Name: ");
+        String lastName = sc.nextLine();
+
+        System.out.print("\nPlease enter the Policyholder’s Age: ");
+        int age = sc.nextInt();
+        sc.nextLine(); 
+
+        System.out.print("\nPlease enter the Policyholder’s Smoking Status (smoker/non-smoker): ");
+        String smokingStatus = sc.nextLine();
+
+        System.out.print("\nPlease enter the Policyholder’s Height (in inches): ");
+        double height = sc.nextDouble();
+
+        System.out.print("\nPlease enter the Policyholder’s Weight (in pounds): ");
+        double weight = sc.nextDouble();
+
+        Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
+
+        System.out.println("\n--- Policy Details ---");
+        System.out.println("Policy Number: " + policy.getPolicyNumber());
+        System.out.println("Provider Name: " + policy.getProviderName());
+        System.out.println("Policyholder: " + policy.getFirstName() + " " + policy.getLastName());
+        System.out.println("Age: " + policy.getAge());
+        System.out.println("Smoking Status: " + policy.getSmokingStatus());
+        System.out.println("Height: " + policy.getHeight() + " inches");
+        System.out.println("Weight: " + policy.getWeight() + " pounds");
+        System.out.printf("BMI: %.2f%n", policy.calculateBMI());
+        System.out.printf("Policy Price: $%.2f%n", policy.calculatePolicyPrice());
+
+        sc.close();
     }
 }
