@@ -5,7 +5,6 @@
 public class PolicyHolder
 { //open the class container
 
-   // Fields related to the policyholder
    private String firstName;
    private String lastName;
    private int age;
@@ -22,7 +21,7 @@ public class PolicyHolder
    }
 
    /**
-    * Constructor that initializes all policyholder data
+    * Constructor that sets all personal information
     */
    public PolicyHolder(String firstName, String lastName, int age, String smokingStatus,
                        double heightInches, double weightPounds)
@@ -55,7 +54,7 @@ public class PolicyHolder
    public void setWeightPounds(double weightPounds) { this.weightPounds = weightPounds; }
 
    /**
-    * Calculates BMI using formula: (weight * 703) / (height^2)
+    * Calculates and returns BMI using the formula (weight * 703) / (height^2)
     */
    public double getBMI()
    {
@@ -64,7 +63,7 @@ public class PolicyHolder
    }
 
    /**
-    * Returns a formatted string that represents all policyholder data.
+    * Returns a formatted string containing all PolicyHolder information.
     */
    public String toString()
    {
