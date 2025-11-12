@@ -1,11 +1,11 @@
 /**
  * The PolicyHolder class stores personal information 
- * for a person who owns an insurance policy.
+ * about the person who owns an insurance policy.
  */
 public class PolicyHolder
 { //open the class container
 
-   // Fields related to the person (moved from Policy)
+   // Fields related to the policyholder
    private String firstName;
    private String lastName;
    private int age;
@@ -22,13 +22,7 @@ public class PolicyHolder
    }
 
    /**
-    * Constructor with all personal fields
-    * @param firstName policyholder's first name
-    * @param lastName policyholder's last name
-    * @param age policyholder's age
-    * @param smokingStatus "smoker" or "non-smoker"
-    * @param heightInches height in inches
-    * @param weightPounds weight in pounds
+    * Constructor that initializes all policyholder data
     */
    public PolicyHolder(String firstName, String lastName, int age, String smokingStatus,
                        double heightInches, double weightPounds)
@@ -42,7 +36,6 @@ public class PolicyHolder
    }
 
    // ===== Getters and Setters =====
-
    public String getFirstName() { return firstName; }
    public void setFirstName(String firstName) { this.firstName = firstName; }
 
@@ -61,16 +54,29 @@ public class PolicyHolder
    public double getWeightPounds() { return weightPounds; }
    public void setWeightPounds(double weightPounds) { this.weightPounds = weightPounds; }
 
-   // ===== Calculations =====
-
    /**
-    * Calculates and returns the BMI.
-    * @return BMI as double
+    * Calculates BMI using formula: (weight * 703) / (height^2)
     */
    public double getBMI()
    {
       if (heightInches <= 0) return 0.0;
       return (weightPounds * 703) / (heightInches * heightInches);
+   }
+
+   /**
+    * Returns a formatted string that represents all policyholder data.
+    */
+   public String toString()
+   {
+      return String.format(
+         "Policyholder's First Name: %s%n" +
+         "Policyholder's Last Name: %s%n" +
+         "Policyholder's Age: %d%n" +
+         "Policyholder's Smoking Status (smoker/non-smoker): %s%n" +
+         "Policyholder's Height: %.1f inches%n" +
+         "Policyholder's Weight: %.1f pounds%n" +
+         "Policyholder's BMI: %.2f%n%n",
+         firstName, lastName, age, smokingStatus, heightInches, weightPounds, getBMI());
    }
 
 } //close the class container
