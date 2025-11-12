@@ -1,6 +1,6 @@
 /**
- * The Policy class stores information about an insurance policy 
- * and the PolicyHolder who owns the policy.
+ * The Policy class stores policy information 
+ * and contains a PolicyHolder object to represent ownership.
  */
 public class Policy
 { //open the class container
@@ -21,14 +21,14 @@ public class Policy
    }
 
    /**
-    * Constructor that sets all fields and increments the count
+    * Constructor that sets all fields and increments object count
     */
    public Policy(int policyNumber, String providerName, PolicyHolder policyHolder)
    {
       this.policyNumber = policyNumber;
       this.providerName = providerName;
       this.policyHolder = policyHolder;
-      policyCount++; // increment static counter whenever a new Policy is created
+      policyCount++;
    }
 
    // ===== Getters and Setters =====
@@ -42,7 +42,7 @@ public class Policy
    public void setPolicyHolder(PolicyHolder policyHolder) { this.policyHolder = policyHolder; }
 
    /**
-    * Returns the total number of Policy objects created.
+    * Returns total number of Policy objects created.
     */
    public static int getPolicyCount()
    {
@@ -50,7 +50,7 @@ public class Policy
    }
 
    /**
-    * Calculates total policy price based on age, smoking status, and BMI.
+    * Calculates total policy price based on PolicyHolder details.
     */
    public double getPrice()
    {
@@ -70,7 +70,8 @@ public class Policy
    }
 
    /**
-    * Returns a formatted string with full policy information.
+    * Returns a formatted string containing policy and holder details.
+    * Demonstrates class collaboration: a Policy HAS a PolicyHolder.
     */
    public String toString()
    {
