@@ -1,13 +1,13 @@
 /**
- * The Policy class stores information about an insurance policy
- * and the policyholder associated with it.
+ * The Policy class stores information about an insurance policy 
+ * and the PolicyHolder who owns the policy.
  */
 public class Policy
 { //open the class container
 
    private int policyNumber;
    private String providerName;
-   private PolicyHolder policyHolder; // Composition (Aggregation)
+   private PolicyHolder policyHolder; // Aggregation relationship
 
    /**
     * Default constructor
@@ -18,10 +18,7 @@ public class Policy
    }
 
    /**
-    * Constructor with parameters
-    * @param policyNumber policy ID
-    * @param providerName provider name
-    * @param policyHolder PolicyHolder object
+    * Constructor that sets all fields
     */
    public Policy(int policyNumber, String providerName, PolicyHolder policyHolder)
    {
@@ -31,7 +28,6 @@ public class Policy
    }
 
    // ===== Getters and Setters =====
-
    public int getPolicyNumber() { return policyNumber; }
    public void setPolicyNumber(int policyNumber) { this.policyNumber = policyNumber; }
 
@@ -41,15 +37,12 @@ public class Policy
    public PolicyHolder getPolicyHolder() { return policyHolder; }
    public void setPolicyHolder(PolicyHolder policyHolder) { this.policyHolder = policyHolder; }
 
-   // ===== Price calculation =====
-
    /**
-    * Calculates the policy price based on holder data.
-    * @return total price
+    * Calculates total policy price based on age, smoking status, and BMI.
     */
    public double getPrice()
    {
-      double price = 600.0; // base
+      double price = 600.0;
 
       if (policyHolder.getAge() > 50)
          price += 75.0;
@@ -62,6 +55,20 @@ public class Policy
          price += (bmi - 35) * 20.0;
 
       return price;
+   }
+
+   /**
+    * Returns a formatted string that represents full policy information.
+    * Combines Policy and PolicyHolder details.
+    */
+   public String toString()
+   {
+      return String.format(
+         "Policy Number: %d%n%n" +
+         "Provider Name: %s%n%n" +
+         "%s" +
+         "Policy Price: $%.2f%n%n",
+         policyNumber, providerName, policyHolder.toString(), getPrice());
    }
 
 } //close the class container
