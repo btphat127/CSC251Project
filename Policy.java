@@ -7,7 +7,10 @@ public class Policy
 
    private int policyNumber;
    private String providerName;
-   private PolicyHolder policyHolder; // Aggregation relationship
+   private PolicyHolder policyHolder;
+
+   // Static field to count total number of Policy objects
+   private static int policyCount = 0;
 
    /**
     * Default constructor
@@ -18,13 +21,14 @@ public class Policy
    }
 
    /**
-    * Constructor that sets all fields
+    * Constructor that sets all fields and increments the count
     */
    public Policy(int policyNumber, String providerName, PolicyHolder policyHolder)
    {
       this.policyNumber = policyNumber;
       this.providerName = providerName;
       this.policyHolder = policyHolder;
+      policyCount++; // increment static counter whenever a new Policy is created
    }
 
    // ===== Getters and Setters =====
@@ -36,6 +40,14 @@ public class Policy
 
    public PolicyHolder getPolicyHolder() { return policyHolder; }
    public void setPolicyHolder(PolicyHolder policyHolder) { this.policyHolder = policyHolder; }
+
+   /**
+    * Returns the total number of Policy objects created.
+    */
+   public static int getPolicyCount()
+   {
+      return policyCount;
+   }
 
    /**
     * Calculates total policy price based on age, smoking status, and BMI.
@@ -58,8 +70,7 @@ public class Policy
    }
 
    /**
-    * Returns a formatted string that represents full policy information.
-    * Combines Policy and PolicyHolder details.
+    * Returns a formatted string with full policy information.
     */
    public String toString()
    {
